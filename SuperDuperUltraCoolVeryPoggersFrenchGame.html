@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Duper Ultra Cool Very Poggers French Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+        body { 
+            font-family: 'Parisienne', cursive;
+            text-align: center; 
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 3px 3px 5px black;
+            padding: 20px;
+        }
+        .grid { display: grid; grid-template-columns: repeat(5, 100px); gap: 10px; justify-content: center; }
+        .card { width: 100px; height: 100px; background: lightblue; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; }
+        .flipped { background: white; }
+        .message {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            margin-top: 20px;
+            display: none;
+        }
+        .timer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Super Duper Ultra Cool Very Poggers French Game</h1>
+    <div class="timer" id="timer">Time: 0s</div>
+    <label for="level">Select Level:</label>
+    <select id="level">
+        <option value="7">Year 7</option>
+        <option value="8">Year 8</option>
+        <option value="9">Year 9</option>
+    </select>
+    <button onclick="startGame()">Start</button>
+    <div class="grid" id="grid"></div>
+    <div id="message" class="message"></div>
+    
+    <audio id="correctSound" src="./Data/correct.mp3"></audio>
+    <audio id="wrongSound" src="./Data/wrong.mp3"></audio>
+    <audio id="clickSound" src="./Data/click.mp3"></audio>
+    <audio id="bgMusic1" src="./Data/bg1.mp3" loop></audio>
+    <audio id="bgMusic2" src="./Data/bg2.mp3" loop></audio>
+    <audio id="bgMusic3" src="./Data/bg3.mp3" loop></audio>
+
+    <script>
+        const words = {
+            "7": [["chaise", "chair"], ["livre", "book"], ["stylo", "pen"], ["porte", "door"], ["table", "table"],
+                  ["école", "school"], ["fenêtre", "window"], ["professeur", "teacher"], ["ordinateur", "computer"], ["élève", "student"]],
+            "8": [["histoire", "history"], ["sciences", "science"], ["mathématiques", "math"], ["art", "art"], ["musique", "music"],
+                  ["sport", "sports"], ["anglais", "English"], ["français", "French"], ["espagnol", "Spanish"], ["géographie", "geography"]],
+            "9": [["examen", "exam"], ["devoirs", "homework"], ["emploi du temps", "schedule"], ["récréation", "recess"], ["cantine", "canteen"],
+                  ["collège", "middle school"], ["lycée", "high school"], ["dictionnaire", "dictionary"], ["crayon", "pencil"], ["cahier", "notebook"]]
+        };
+
+        const correctQuotes = ["Nice job!", "You're a genius!", "Très bien!", "Keep it up!", "Fantastic work!", "Mr Tagliaferro would be proud", "This isnt relevant but I like cheese"];
+        const incorrectQuotes = ["WRONG", "Get better", "...", "Congrats, you failed", "Dissapointing", "Womp Womp"];
+        
+        const backgrounds = ["./Data/bg1.jpg", "./Data/bg2.jpg", "./Data/bg3.jpg"];
+        let selectedCards = [];
+        let matchedPairs = 0;
+        let currentLevel = "7";
+        let timer = 0;
+
+        function startGame() {
+            document.body.style.backgroundImage = `url(${backgrounds[Math.floor(Math.random() * backgrounds.length)]})`;
+            
+            currentLevel = document.getElementById("level").value;
+            const grid = document.getElementById("grid");
+            grid.innerHTML = "";
+            matchedPairs = 0;
+            selectedCards = [];
+            timer = 0;
+            updateTimer();
+            
+            let pairs = [...words[currentLevel]];
+            let cards = pairs.flatMap(pair => pair);
+            cards.sort(() => Math.random() - 0.5);
+            
+            cards.forEach((word, index) => {
+                let card = document.createElement("div");
+                card.className = "card";
+                card.dataset.word = word;
+                card.dataset.index = index;
+                card.onclick = () => flipCard(card);
+                grid.appendChild(card);
+            });
+            
+            playRandomMusic();
+        }
+
+        function flipCard(card) {
+            if (selectedCards.length < 2 && !card.classList.contains("flipped")) {
+                document.getElementById("clickSound").play();
+                card.textContent = card.dataset.word;
+                card.classList.add("flipped");
+                selectedCards.push(card);
+            }
+            
+            if (selectedCards.length === 2) {
+                setTimeout(checkMatch, 1000);
+            }
+        }
+
+        function checkMatch() {
+            let [card1, card2] = selectedCards;
+            let pair = words[currentLevel].find(p => p.includes(card1.dataset.word) && p.includes(card2.dataset.word));
+            
+            if (pair) {
+                document.getElementById("correctSound").play();
+                showMessage(correctQuotes);
+                matchedPairs++;
+            } else {
+                document.getElementById("wrongSound").play();
+                showMessage(incorrectQuotes);
+                card1.textContent = "";
+                card2.textContent = "";
+                card1.classList.remove("flipped");
+                card2.classList.remove("flipped");
+            }
+            selectedCards = [];
+        }
+
+        function showMessage(quotes) {
+            let message = document.getElementById("message");
+            message.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+            message.style.display = "block";
+            setTimeout(() => message.style.display = "none", 2000);
+        }
+
+        function updateTimer() {
+            document.getElementById("timer").textContent = `Time: ${timer}s`;
+            setTimeout(() => {
+                timer++;
+                updateTimer();
+            }, Math.random() < 0.3 ? 1300 : 1000);
+        }
+
+        function playRandomMusic() {
+            document.querySelectorAll("audio[id^='bgMusic']").forEach(audio => audio.pause());
+            let music = document.getElementById(`bgMusic${Math.floor(Math.random() * 3) + 1}`);
+            music.play();
+        }
+    </script>
+</body>
+</html>

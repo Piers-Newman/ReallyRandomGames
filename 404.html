@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 ERROR - REALLY RANDOM GAMES</title>
+    <style>
+        /* Copy your existing styles from index.html */
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==') repeat;
+            font-family: 'Comic Sans MS', 'Courier New', monospace;
+            color: #0ff;
+            overflow-x: hidden;
+        }
+
+        .crt {
+            background: linear-gradient(rgba(18, 16, 16, 0.1) 50%, rgba(0, 0, 0, 0.2) 50%);
+            background-size: 100% 4px;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .error-message {
+            border: 8px double #f0f;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 600px;
+            background: #000;
+            position: relative;
+        }
+
+        .error-code {
+            font-size: 8em;
+            color: #ff0;
+            text-shadow: 0 0 15px #ff0;
+            margin: 0;
+            animation: glitch 1s infinite;
+        }
+
+        .error-text {
+            font-size: 1.5em;
+            color: #0f0;
+            margin: 1rem 0;
+        }
+
+        .alien {
+            font-size: 5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .matrix-code {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .retro-button {
+            background: #000;
+            border: 3px solid #0ff;
+            color: #0ff;
+            padding: 1rem 2rem;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .retro-button:hover {
+            background: #0ff;
+            color: #000;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        /* Add your existing marquee styles here */
+        marquee {
+            color: #ff0;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #000;
+            border-top: 2px dotted #0ff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="crt">
+        <header>
+            <h1 style="color: #f0f">✧･ﾟ: * REALLY RANDOM 404 *:･ﾟ✧</h1>
+            <h2 class="blink">(╯°□°）╯︵ ┻━┻ PAGE NOT FOUND!</h2>
+        </header>
+
+        <div class="error-message">
+            <div class="alien">👾</div>
+            <h1 class="error-code">404</h1>
+            <p class="error-text">A WILD ERROR APPEARED!</p>
+            <p class="error-text">You've reached the void where<br>a game should be... maybe</p>
+            <p class="error-text">Try these instead:</p>
+            
+            <a href="./index.html" class="retro-button">RETURN TO SAFETY</a>
+            
+            <div style="margin: 2rem">
+                <img src="./data/spinningfloppydisk.gif" alt="Broken Floppy" style="border: 3px solid #f0f; max-width: 200px;">
+            </div>
+        </div>
+
+        <marquee behavior="scroll" direction="left" scrollamount="10">
+            ░░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░   ERROR 404   ░░░░░▄▄▄▄▄▄▄▄▀▀▀▀▀▀▀▀▀▀▀▄▄▄▄▄▄░░░░░░
+        </marquee>
+
+        <div class="matrix-code" id="matrix"></div>
+    </div>
+
+    <script>
+        // Simple matrix rain effect
+        function createMatrix() {
+            const chars = "01";
+            const container = document.getElementById('matrix');
+            
+            setInterval(() => {
+                const element = document.createElement('div');
+                element.style.position = 'absolute';
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.animation = 'fall linear';
+                element.style.animationDuration = Math.random() * 3 + 2 + 's';
+                element.textContent = chars[Math.floor(Math.random() * chars.length)];
+                
+                container.appendChild(element);
+                
+                setTimeout(() => element.remove(), 5000);
+            }, 100);
+        }
+        createMatrix();
+    </script>
+</body>
+</html>

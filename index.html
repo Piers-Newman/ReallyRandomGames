@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A totally rad collection of browser games by Piers Newman - maximum 80s style!">
+    <title>REALLY RANDOM GAMES!!!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==') repeat,
+                linear-gradient(0deg, 
+                    rgba(0, 255, 255, 0.1) 0%, 
+                    rgba(0, 255, 255, 0.3) 10%,
+                    rgba(0, 255, 255, 0.1) 20%,
+                    transparent 100%
+                );
+            background-size: auto, auto, 100% 400px;
+            animation: scrollBg 20s linear infinite;
+            font-family: 'Comic Sans MS', 'Courier New', monospace;
+            color: #0ff;
+            overflow-x: hidden;
+        }
+
+        @keyframes scrollBg {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 0 0, 0 0, 0 400px; }
+        }
+
+        .crt {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0.1) 50%,
+                rgba(0, 0, 0, 0.2) 50%
+            );
+            background-size: 100% 4px;
+            animation: scanlines 1s linear infinite;
+        }
+
+        @keyframes scanlines {
+            from { background-position: 0 0; }
+            to { background-position: 0 4px; }
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            border: 4px double #f0f;
+            margin: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #f0f;
+            font-size: 2.8em;
+            text-shadow: 0 0 10px #f0f;
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .games-table {
+            margin: 20px auto;
+            border: 3px dashed #0ff;
+            padding: 15px;
+            background: #000;
+        }
+
+        .games-table td {
+            padding: 10px 20px;
+            border-bottom: 2px dotted #0f0;
+        }
+
+        .games-table a {
+            color: #0f0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .games-table a:hover {
+            color: #ff0;
+            text-decoration: underline;
+        }
+
+        .photo-wall {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: #000;
+            border-top: 4px solid #f0f;
+            margin-top: 30px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 5px 5px 15px 5px;
+            transform: rotate(3deg);
+            width: 150px;
+            box-shadow: 2px 2px 5px rgba(0,255,255,0.5);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 120px;
+            border: 1px solid #000;
+            object-fit: cover;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            color: #000;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+
+        marquee {
+            color: #ff0;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #000;
+            border-top: 2px dotted #0ff;
+            margin-top: 20px;
+        }
+
+        /* Blinking text animation */
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="crt">
+        <header>
+            <h1>✧･ﾟ: * REALLY RANDOM GAMES *:･ﾟ✧</h1>
+            <h2 class="blink">BY PIERS NEWMAN (★ ω ★)</h2>
+        </header>
+
+        <table class="games-table">
+            <tr><td>➤ <a href="./Games/Dwayne Johnson Bubble Blast.html">DWAYNE JOHNSON BUBBLE BLAST</a></td></tr>
+            <tr><td>➤ <a href="./Games/French Dwayne Johnson Bubble Blast.html">FRENCH DWAYNE JOHNSON BUBBLE BLAST</a></td></tr>
+            <tr><td>➤ <a href="./Games/Dorito Clicker/Dorito Clicker.html">DORITO CLICKER 9000</a></td></tr>
+            <tr><td>➤ <a href="./Games/Jamie Bothwell Blast.html">JAMIE BOTHWELL BLAST</a></td></tr>
+            <tr><td>➤ <a href="./Games/Linguascope Copy/index.html">SUPER POGGERS FRENCH GAME</a></td></tr>
+            <tr><td>➤ <a href="./Games/Make an omelette with Charles Darwin.html">MAKE AN OMELETTE WITH CHARLES DARWIN</a></td></tr>
+        </table>
+
+        <div class="photo-wall">
+            <!-- Add your game screenshots here -->
+            <div class="polaroid">
+                <img src="./Images/DwayneJohnsonBubbleBlast.jpg" alt="Bubble Blast">
+                <div class="polaroid-caption">BUBBLE BLAST!!</div>
+            </div>
+            <div class="polaroid" style="transform: rotate(-2deg)">
+                <img src="./Images/DoritoClicker.jpg" alt="Dorito Clicker">
+                <div class="polaroid-caption">CLICK THOSE DORITOS!</div>
+            </div>
+            <!-- Add more polaroids for each game -->
+        </div>
+
+        <marquee behavior="scroll" direction="left" scrollamount="10">
+            ☆*: .｡. o(≧▽≦)o .｡.:*☆   This website is very POGGERS!   ☆*: .｡. o(≧▽≦)o .｡.:*☆
+        </marquee>
+    </div>
+</body>
+</html>

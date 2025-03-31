@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorito Clicker</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #fbbd08, #f2711c);
+            margin: 0;
+            color: #fff;
+        }
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+        }
+        .dorito-button {
+            margin: 20px;
+            background: url('./Data/Doritos.jpeg') no-repeat center;
+            background-size: contain;
+            border: none;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+        .dorito-button:active {
+            transform: scale(0.95);
+        }
+        .stats {
+            font-size: 1.5rem;
+            margin: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .upgrades-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .upgrade {
+            border: 2px solid #fff;
+            border-radius: 10px;
+            padding: 10px;
+            min-width: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .upgrade:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dorito Clicker</h1>
+        <p>Click the Dorito to earn points and buy upgrades!</p>
+    </div>
+
+    <button class="dorito-button" onclick="clickDorito()"></button>
+
+    <div class="stats">
+        <p><strong>Doritos:</strong> <span id="doritoCount">0</span></p>
+        <p><strong>Doritos per second:</strong> <span id="dps">0</span></p>
+    </div>
+
+    <div class="upgrades-container" id="upgradesContainer">
+        <!-- Upgrades will be dynamically added here -->
+    </div>
+
+    <script>
+        let doritos = 0;
+        let dps = 0;
+        const upgrades = [
+            { name: 'Cheesy Fingers', value: 1, cost: 10 },
+            { name: 'Extra Cheese', value: 2, cost: 50 },
+            { name: 'Family Pack', value: 5, cost: 200 },
+            { name: 'Party Size', value: 10, cost: 500 },
+            { name: 'Dorito Factory', value: 20, cost: 1000 },
+            { name: 'Cheese Fountain', value: 50, cost: 5000 },
+            { name: 'Infinite Bag', value: 100, cost: 10000 },
+            { name: 'Dorito Scientist', value: 200, cost: 25000 },
+            { name: 'Flavor Booster', value: 500, cost: 50000 },
+            { name: 'Dorito Tycoon', value: 1000, cost: 100000 },
+            { name: 'Cheese Universe', value: 2000, cost: 250000 },
+            { name: 'Ultimate Chip', value: 5000, cost: 500000 },
+            { name: 'Dorito Multiverse', value: 10000, cost: 1000000 }
+        ];
+
+        function updateStats() {
+            document.getElementById('doritoCount').textContent = doritos;
+            document.getElementById('dps').textContent = dps;
+        }
+
+        function clickDorito() {
+            doritos++;
+            updateStats();
+        }
+
+        function buyUpgrade(index) {
+            const upgrade = upgrades[index];
+
+            if (doritos >= upgrade.cost) {
+                doritos -= upgrade.cost;
+                dps += upgrade.value;
+                upgrade.cost = Math.floor(upgrade.cost * 1.5);
+                renderUpgrades();
+                updateStats();
+            } else {
+                alert("Not enough Doritos!");
+            }
+        }
+
+        function renderUpgrades() {
+            const container = document.getElementById('upgradesContainer');
+            container.innerHTML = '';
+
+            upgrades.forEach((upgrade, index) => {
+                const upgradeDiv = document.createElement('div');
+                upgradeDiv.className = 'upgrade';
+                upgradeDiv.onclick = () => buyUpgrade(index);
+                upgradeDiv.innerHTML = `
+                    <h3>${upgrade.name}</h3>
+                    <p>+${upgrade.value} Doritos per second</p>
+                    <p>Cost: ${upgrade.cost} Doritos</p>
+                `;
+                container.appendChild(upgradeDiv);
+            });
+        }
+
+        setInterval(() => {
+            doritos += dps;
+            updateStats();
+        }, 1000);
+
+        renderUpgrades();
+    </script>
+</body>
+</html>

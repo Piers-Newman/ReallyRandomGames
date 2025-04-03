@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT - REALLY RANDOM GAMES</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* Copy main site styles */
+        body {
+            margin: 0;
+            padding: 20px;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQAKrVq36zwjjgzhhYWGMYAEYB8RmROaABADeOQ8CXl/xfgAAAABJRU5ErkJggg==') repeat,
+                linear-gradient(0deg, 
+                    rgba(0, 255, 255, 0.1) 0%, 
+                    rgba(0, 255, 255, 0.3) 10%,
+                    rgba(0, 255, 255, 0.1) 20%,
+                    transparent 100%
+                );
+            background-size: auto, auto, 100% 400px;
+            animation: scrollBg 20s linear infinite;
+            font-family: 'Comic Sans MS', 'Courier New', monospace;
+            color: #0ff;
+            overflow-x: hidden;
+        }
+
+        .crt {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0.1) 50%,
+                rgba(0, 0, 0, 0.2) 50%
+            );
+            background-size: 100% 4px;
+            animation: scanlines 1s linear infinite;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            border: 4px double #f0f;
+            margin: 20px;
+            position: relative;
+            z-index: 1;
+            max-width: 90vw;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            color: #f0f;
+            font-size: clamp(1.5rem, 4vw, 2.8rem);
+            text-shadow: 0 0 10px #f0f;
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+            white-space: nowrap;
+            display: block;
+            text-align: center;
+        }
+
+        .content-box {
+            border: 3px dashed #0ff;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            background: #000;
+        }
+
+        p {
+            color: #0f0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+
+        .highlight {
+            color: #ff0;
+            text-shadow: 0 0 5px #ff0;
+        }
+
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes scrollBg {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 0 0, 0 0, 0 400px; }
+        }
+        @keyframes scanlines { 
+            from { background-position: 0 0; }
+            to { background-position: 0 4px; }
+        }
+
+        marquee {
+            color: #ff0;
+            font-size: 1.2em;
+            padding: 10px;
+            background: #000;
+            border-top: 2px dotted #0ff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="crt">
+        <header>
+            <h1>✧･ﾟ: * REALLY RANDOM GAMES *:･ﾟ✧</h1>
+            <h2 class="blink">About</h2>
+        </header>
+
+        <div class="content-box">
+            <p class="highlight">>>> THE VISION <<<</p>
+            <p>Welcome to the digital playground of <span class="highlight">Piers Newman</span> - 
+            where game development meets absurdist humor!</p>
+
+            <p>This passion project combines:</p>
+            <ul style="color: #0f0; list-style: square;">
+                <li>90s browser game nostalgia</li>
+                <li>Surreal mashups for games</li>
+                <li>Completely unpredictable gameplay</li>
+            </ul>
+
+            <p class="highlight">I just hope you enjoy :D</p>
+            <p style="text-align: center; margin-top: 2rem;">
+                <a href="./index.html" style="color: #0ff; text-decoration: none; border: 2px solid #0ff; padding: 0.5rem 1rem;">
+                    ↫ RETURN TO MADNESS
+                </a>
+            </p>
+        </div>
+        <marquee behavior="scroll" direction="left" scrollamount="10">
+            Bottom Text
+        </marquee>
+    </div>
+</body>
+</html>

@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A collection of very random games by Piers Newman">
     <title>REALLY RANDOM GAMES!!!</title>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Really Random Games",
+            "description": "A collection of experimental browser games featuring unique concepts and retro styling",
+            "creator": {
+                "@type": "Person",
+                "name": "Piers Newman"
+            }
+        }
+    </script>
     <style>
         body {
             margin: 0;
@@ -23,6 +35,17 @@
             font-family: 'Comic Sans MS', 'Courier New', monospace;
             color: #0ff;
             overflow-x: hidden;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
         }
 
         @keyframes scrollBg {
@@ -184,23 +207,68 @@
         </header>
 
         <table class="games-table">
-            <tr><td>➤ <a href="./DwayneJohnsonBubbleBlast.html">DWAYNE JOHNSON BUBBLE BLAST</a></td></tr>
-            <tr><td>➤ <a href="./FrenchDwayne JohnsonBubbleBlast.html">FRENCH DWAYNE JOHNSON BUBBLE BLAST</a></td></tr>
-            <tr><td>➤ <a href="./DoritoClicker.html">DORITO CLICKER 9000</a></td></tr>
-            <tr><td>➤ <a href="./JamieBothwellBlast.html">JAMIE BOTHWELL BLAST</a></td></tr>
-            <tr><td>➤ <a href="./SuperDuperUltraCoolVeryPoggersFrenchGame.html">SUPER POGGERS FRENCH GAME</a></td></tr>
-            <tr><td>➤ <a href="./MakeAnOmeletteWithCharlesDarwin.html">MAKE AN OMELETTE WITH CHARLES DARWIN</a></td></tr>
-            <tr><td>➤ <a href="./About.html">ABOUT PAGE</a></td></tr>
+            <tr>
+                <td>
+                    ➤ <a href="./DwayneJohnsonBubbleBlast.html">DWAYNE JOHNSON BUBBLE BLAST</a>
+                    <span class="sr-only">Arcade-style bubble popping game featuring Dwayne "The Rock" Johnson with power-ups and time challenges</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ➤ <a href="./FrenchDwayneJohnsonBubbleBlast.html">FRENCH DWAYNE JOHNSON BUBBLE BLAST</a>
+                    <span class="sr-only">Surreal French parody version with The Rock speaking Franglish while popping champagne bubbles in Paris</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ➤ <a href="./DoritoClicker.html">DORITO CLICKER 9000</a>
+                    <span class="sr-only">Snack-themed incremental clicker game with Dorito currency and absurd upgrades like Nacho Cheese Fountain</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ➤ <a href="./JamieBothwellBlast.html">JAMIE BOTHWELL BLAST</a>
+                    <span class="sr-only">Retro asteroid shooter remake featuring comedian Jamie Bothwell as spaceship captain</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ➤ <a href="./SuperDuperUltraCoolVeryPoggersFrenchGame.html">SUPER POGGERS FRENCH GAME</a>
+                    <span class="sr-only">Memory matching game with French cultural icons and Eiffel Tower power-ups</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ➤ <a href="./MakeAnOmeletteWithCharlesDarwin.html">MAKE AN OMELETTE WITH CHARLES DARWIN</a>
+                    <span class="sr-only">Historical cooking simulator combining evolutionary biology with omelette recipes</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ➤ <a href="./About.html">ABOUT PAGE</a>
+                    <span class="sr-only">Learn about the creator Piers Newman and the development of these experimental games</span>
+                </td>
+            </tr>
         </table>
 
         <div class="photo-wall">
-            <div class="polaroid">
-                <img src="./Data/DwayneJohnsonBubbleBlast.jpg" alt="Bubble Blast">
-                <div class="polaroid-caption">BUBBLE BLAST!!</div>
+        <div class="polaroid">
+            <img src="./Data/DwayneJohnsonBubbleBlast.jpg" 
+                alt="DWAYNE JOHNSON BUBBLE BLAST!"
+                class="crt-effect">
+            <div class="polaroid-caption">BUBBLE BLAST FRENZY!</div>
+            <div class="sr-only">
+                Retro arcade game featuring The Rock character with power-up bubbles and time attack mode
             </div>
-            <div class="polaroid" style="transform: rotate(-2deg)">
-                <img src="./Data/DoritoClicker.jpg" alt="Dorito Clicker">
-                <div class="polaroid-caption">CLICK THOSE DORITOS!</div>
+        </div>
+
+        <div class="polaroid" style="transform: rotate(-2deg)">
+            <img src="./Data/DoritoClicker.jpg" 
+                alt="Dorito Clicker!!"
+                class="crt-effect">
+            <div class="polaroid-caption">CLICK FOR NACHO POWER!</div>
+            <div class="sr-only">
+                Incremental clicker game with Dorito currency system and absurd snack-themed upgrades
             </div>
         </div>
 
